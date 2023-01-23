@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://h1w3fg0ynmq4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8xya"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8v46p"]
+material = SubResource("StandardMaterial3D_a8xya")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gywjf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y21na"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_bpda3"]
+material = SubResource("StandardMaterial3D_y21na")
+left_to_right = 0.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t8syc"]
+
+[node name="TileMeshLibrary" type="Node3D"]
+
+[node name="FlatTile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("BoxMesh_8v46p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FlatTile"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FlatTile/StaticBody3D"]
+shape = SubResource("BoxShape3D_gywjf")
+
+[node name="SlopeTile" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_bpda3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SlopeTile"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlopeTile/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_t8syc")

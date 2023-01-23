@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwhjgmxm88dr"]
+
+[ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_eroe6"]
+[ext_resource type="MeshLibrary" uid="uid://jrxbiga1f1di" path="res://TileMeshLibrary.tres" id="1_us4lx"]
+[ext_resource type="PackedScene" uid="uid://h1w3fg0ynmq4" path="res://TileMeshLibraryScene.tscn" id="2_ida43"]
+
+[node name="Root" type="Node"]
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+script = ExtResource("1_eroe6")
+
+[node name="TitleText" type="RichTextLabel" parent="MainMenu"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 147.0
+offset_right = 575.0
+offset_bottom = 291.0
+bbcode_enabled = true
+text = "Title text [b]title text[/b] [i]title text[/i]"
+
+[node name="StartGameButton" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 353.0
+offset_right = 553.0
+offset_bottom = 482.0
+text = "load"
+
+[node name="Level" type="Node" parent="."]
+
+[node name="HUD" type="Control" parent="Level"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Level/HUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level"
+
+[node name="Prefabs?" type="Node" parent="."]
+
+[node name="Floormap" type="GridMap" parent="Prefabs?"]
+mesh_library = ExtResource("1_us4lx")
+cell_size = Vector3(1, 1, 1)
+
+[node name="TileMeshLibrary" parent="Prefabs?" instance=ExtResource("2_ida43")]
+visible = false
+
+[editable path="Prefabs?/TileMeshLibrary"]
